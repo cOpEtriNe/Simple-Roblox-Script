@@ -1,0 +1,154 @@
+-- made by cOpEtriNe
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local Frame_2 = Instance.new("Frame")
+local SelfChams = Instance.new("TextButton")
+local Speedhack = Instance.new("TextButton")
+local Xray = Instance.new("TextButton")
+local JumpHeight = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.0943861827, 0, 0.52638036, 0)
+Frame.Size = UDim2.new(0, 479, 0, 247)
+Frame.Active = true
+Frame.Draggable = true
+Frame.Visible = true
+
+title.Name = "title"
+title.Parent = Frame
+title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+title.Size = UDim2.new(0, 479, 0, 50)
+title.Font = Enum.Font.SourceSans
+title.Text = "simple game hack "
+title.TextColor3 = Color3.fromRGB(0, 0, 0)
+title.TextScaled = true
+title.TextSize = 50.000
+title.TextWrapped = true
+
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_2.Position = UDim2.new(0.0339425541, 0, 0.230769232, 0)
+Frame_2.Size = UDim2.new(0, 429, 0, 177)
+
+SelfChams.Name = "SelfChams"
+SelfChams.Parent = Frame_2
+SelfChams.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+SelfChams.Position = UDim2.new(0.0293972697, 0, 0.0564971752, 0)
+SelfChams.Size = UDim2.new(0, 200, 0, 50)
+SelfChams.Font = Enum.Font.SourceSans
+SelfChams.Text = "chams"
+SelfChams.TextColor3 = Color3.fromRGB(255, 255, 255)
+SelfChams.TextScaled = true
+SelfChams.TextSize = 14.000
+SelfChams.TextWrapped = true
+SelfChams.MouseButton1Down:connect(function()
+	function CreateSG(name,parent,face)
+		local SurfaceGui = Instance.new("SurfaceGui",parent)
+		SurfaceGui.Parent = parent
+		SurfaceGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		SurfaceGui.Face = Enum.NormalId[face]
+		SurfaceGui.LightInfluence = 0
+		SurfaceGui.ResetOnSpawn = false
+		SurfaceGui.Name = name
+		SurfaceGui.AlwaysOnTop = true
+		local Frame = Instance.new("Frame",SurfaceGui)
+		Frame.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+		Frame.Size = UDim2.new(1,0,1,0)
+	end
+
+	while wait(1) do
+		for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+			if v ~= game:GetService("Players").LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("Head") and v.Character.Head:FindFirstChild("cham") == nil then
+				for i,v in pairs (v.Character:GetChildren()) do
+					if v:IsA("MeshPart") or v.Name == "Head" then
+						CreateSG("cham",v,"Back")
+						CreateSG("cham",v,"Front")
+						CreateSG("cham",v,"Left")
+						CreateSG("cham",v,"Right")
+						CreateSG("cham",v,"Right")
+						CreateSG("cham",v,"Top")
+						CreateSG("cham",v,"Bottom")
+					end
+				end
+			end
+		end
+	end
+end)
+
+
+Speedhack.Name = "Speedhack"
+Speedhack.Parent = Frame_2
+Speedhack.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+Speedhack.Position = UDim2.new(0.0293972697, 0, 0.395480245, 0)
+Speedhack.Size = UDim2.new(0, 200, 0, 50)
+Speedhack.Font = Enum.Font.SourceSans
+Speedhack.Text = "Speed "
+Speedhack.TextColor3 = Color3.fromRGB(255, 255, 255)
+Speedhack.TextScaled = true
+Speedhack.TextSize = 14.000
+Speedhack.TextWrapped = true
+Speedhack.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 90
+end)
+
+
+Xray.Name = "Xray"
+Xray.Parent = Frame_2
+Xray.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+Xray.Position = UDim2.new(0.518907726, 0, 0.0564971864, 0)
+Xray.Size = UDim2.new(0, 200, 0, 50)
+Xray.Font = Enum.Font.SourceSans
+Xray.Text = "Xray"
+Xray.TextColor3 = Color3.fromRGB(255, 255, 255)
+Xray.TextScaled = true
+Xray.TextSize = 14.000
+Xray.TextWrapped = true
+Xray.MouseButton1Down:connect(function()
+	for _,i in pairs(workspace:GetDescendants()) do
+		if i:IsA("BasePart") and not i.Parent:FindFirstChildOfClass('Humanoid') and not i.Parent.Parent:FindFirstChildOfClass('Humanoid') then
+			i.LocalTransparencyModifier = 0.5
+		end
+	end
+end)
+
+JumpHeight.Name = "JumpHeight"
+JumpHeight.Parent = Frame_2
+JumpHeight.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+JumpHeight.Position = UDim2.new(0.516576767, 0, 0.395480245, 0)
+JumpHeight.Size = UDim2.new(0, 200, 0, 50)
+JumpHeight.Font = Enum.Font.SourceSans
+JumpHeight.Text = "Jump Height"
+JumpHeight.TextColor3 = Color3.fromRGB(255, 255, 255)
+JumpHeight.TextScaled = true
+JumpHeight.TextSize = 14.000
+JumpHeight.TextWrapped = true
+JumpHeight.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
+end)
+
+
+-- Scripts:
+
+local function BBAXYV_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+
+	local t = 10;
+	
+	while wait() do
+	
+		local hue = tick() % t / t
+	
+		local color = Color3.fromHSV(hue,1,1)
+	
+		script.Parent.BackgroundColor3 = color
+	
+	end
+end
+coroutine.wrap(BBAXYV_fake_script)()
